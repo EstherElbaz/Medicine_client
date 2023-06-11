@@ -15,16 +15,6 @@ export default function MyMedicines() {
     console.log(yyy, "user from context");
 
     const getMedicinesForUser = async () => {
-        // function compare(a: MedicineForUser, b: MedicineForUser) {
-        //     if (a.Hour < b.Hour) {
-        //         return -1;
-        //     }
-        //     if (a.Hour > b.Hour) {
-        //         return 1;
-        //     }
-        //     return 0;
-        // }
-
         console.log(yyy?.id, "jjj");
         const tr=localStorage.getItem("userId")
         const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
@@ -39,21 +29,11 @@ export default function MyMedicines() {
         else {
 
             const medicinesList = await res.json();
-            var medicinesListByStusus = [];
-            for (var e in medicinesList) {
-
-                //update to filter insted of for loop
-                if (medicinesList[e].status) {
-                    medicinesListByStusus.push(medicinesList[e]);
-                }
-            }
             const filteredAndOrderedArray = medicinesList
                 .filter((item: { status: Boolean; }) => item.status == true)
-                /*.sort((a, b) => a.ts - b.ts);*/
-
-
-            medicinesListByStusus.sort(compare);
-            await setMedicines(medicinesListByStusus);
+                 .sort((a: { hour: number; }, b: { hour: number; }) => a.hour - b.hour);
+            
+            await setMedicines(filteredAndOrderedArray);
             console.log(medicines);
         }
     }
