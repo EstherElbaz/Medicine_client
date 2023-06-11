@@ -1,16 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContext from "./User/UserContext";
+import { useUserContext } from "./User/UserContext";
 
 export default function Login() {
     const [userName, setuserName] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
-    const { user, setUser } = useContext(UserContext);
+    const { user: yyy, setUser } = useUserContext();
     const navigate = useNavigate();
-
+  
     const login = async () => {
-
         const res = await fetch(`https://localhost:7247/api/User?userName=${userName}&password=${password}`)
         if (!(res).ok) {
             throw Error(`status: ${res.status} is making troubles again😱`);
@@ -27,16 +26,19 @@ export default function Login() {
             }
             else {
                 const user = await res.json();
+                console.log(yyy, "user from cntext")
 
                 localStorage.setItem("userId", user.id);
-                sessionStorage.setItem("user", user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+            
                 await (setUser && setUser(user));
-                navigate("./medicines", { replace: true });
+        
+               // navigate("./medicines", { replace: true });
             }
     }
     useEffect(() => {
-        console.log({ user });
-    }, [user])
+        console.log({ yyy },"6yttxgfsdchhyjulpo");
+    }, [yyy])
 
 
     return (

@@ -24,16 +24,18 @@ export class MedicineForUser {
     Id: Number = 0;
     UserId: Number = 0;
     MedicineId: Number = 0;
+    name:String = "";
     SumOfPills: Number = 0;
     Hour: Number = 0;
     Note: String = "";
     Status: Boolean = true;
     MedicineName: String = ""
 
-    constructor(userId: any, medicineId: Number, sumOfPills: Number, hour: Number, note: String, status: Boolean, MedicineName: String) {
+    constructor(userId: any, medicineId: Number, sumOfPills: Number, name:String, hour: Number, note: String, status: Boolean, MedicineName: String) {
         this.UserId = userId;
         this.MedicineId = medicineId;
         this.SumOfPills = sumOfPills;
+        this.name = name;
         this.Hour = hour;
         this.Note = note;
         this.Status = status;

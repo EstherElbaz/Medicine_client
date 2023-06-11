@@ -11,32 +11,39 @@ import UserProvider from './components/User/UserProvider';
 import { Dialog } from '@mui/material';
 
 import FullScreenDialog from './components/dial';
+import { log } from 'console';
 
 
 function App() {
-  const [userId ,setUserId]=useState(0);
+  const [userId ,setUserId]=useState('');
   useEffect(()=>{ 
+    console.log("leahhh");
+    
   const id =localStorage.getItem("userId")
-  if(typeof id  ==='number')
+  console.log(id,"id");
+  
+  if(typeof id  ==='string'){
+    console.log(id,"id")
       setUserId(id)
-  })
+  }
+  },[])
 
   document.title = "your medicines";
   return (
-    <UserProvider  userId="123">
+    <UserProvider userId={localStorage.getItem("userId")}>
     <BrowserRouter>
       <Routes>
-        {/* {userId?<> */}
+        {userId?<>
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path='/update' element={<UserDetailsUpdate />} />
         <Route path='/medicines' element={<MyMedicines />} />
         <Route path ='/Dialog' element={<FullScreenDialog/>}/>
-
-        {/* </>:  */}
         <Route path="/login" element={<Login />} />
+        </>: 
+        <Route path="/" element={<Login />} />
      
-     {/* }  */}
+      } 
      </ Routes>
     </BrowserRouter>
     </UserProvider>

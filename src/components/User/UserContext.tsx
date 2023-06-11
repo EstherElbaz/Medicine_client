@@ -1,6 +1,6 @@
-import React from "react";
+import {createContext,useContext} from "react";
 import { User } from "../../models";
 
-const UserContext = React.createContext<{ user?: User, setUser?: (userT: User) => void }>({ user: undefined, setUser: undefined });
+export const UserContext = createContext<{ user?: User, setUser?: (userT: User) => void }>({ user: undefined, setUser: undefined });
 
-export default UserContext;
+export const useUserContext = () => useContext(UserContext);

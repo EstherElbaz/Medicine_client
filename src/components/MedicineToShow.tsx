@@ -1,4 +1,3 @@
-
 import { Checkbox } from "@mui/material"
 import React, { useState } from "react"
 import { TakingMedication } from "../models";
@@ -30,8 +29,6 @@ export default function MedicineToShow(props: any) {
             //לעשות את הצק בוקס דיסאבל
             alert(`לקחת את התרופה ${props.name}`)
         }
-
-
     }
 
     const ITtokmymedicine = async () => {

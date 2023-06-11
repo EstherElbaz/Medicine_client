@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import UserContext from "./UserContext";
-
+import { UserContext } from "./UserContext";
 
 const UserProvider = ({ children, userId }) => {
-    const [user, setUser] = useState({ name: "לא רשום" });
+    const [user, setUser] = useState()
+    const [u, setU] = useState();
 
-    const getUserById = async() => {
-        
-        const res = await fetch(`https://localhost:7247/api/User?userId=${userId}`)
+    const getUserById = async () => {
+
+        const res = await fetch(`https://localhost:7247/api/User/getById?userId=${userId}`)
+
         if (!(res).ok) {
             throw Error(`status: ${res.status} is making troubles again😱`);
         }
@@ -16,20 +17,23 @@ const UserProvider = ({ children, userId }) => {
                 console.log("user is not exist")
             }
             else {
-                return res.json();
+
+                const ll = await res.json();
+
+                setU(ll);
+                return ll;
             }
     }
 
 
-
     useEffect(() => {
-        if (userId) {
-            const u = getUserById()
-            setUser(u);
-        }
-        setUser({ name: "לא רשום" });
-    }, [userId]);
+        getUserById()
 
+        if (u == null) {
+            setUser({ name: "לא רשום" });
+        }
+    
+    }, []);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
@@ -39,5 +43,3 @@ const UserProvider = ({ children, userId }) => {
 }
 
 export default UserProvider
-
-

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import '../App.css'
-import UserContext from "./User/UserContext";
+import {useUserContext} from "./User/UserContext";
 
 
 export default function Home() {
 
      const [count, setCount] = useState(2);
-    const { user: us } = useContext(UserContext)
+    const { user: us } = useUserContext()
 
     useEffect(() => {
         document.title = `לחצת ${count} פעמים`;
