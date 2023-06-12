@@ -1,6 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { MedicineForUser, User } from "../models";
 import AddMedicine from "./AddMedicine";
 import MedicineToShow from "./MedicineToShow";
@@ -11,12 +11,16 @@ export default function MyMedicines() {
     const [medicines, setMedicines] = useState<any>([]);
     const [addMed, setAddMed] = useState(false);
     const { user:yyy } = useUserContext()
-
-    console.log(yyy, "user from context");
-
+    const tr=localStorage.getItem("userId")
+    console.log(yyy, "user from context2222222222222222");
+    const TakingMedication = async ()=>{
+        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
+        return await res.json
+    }
+    const getMedicines =async ()=>{}
     const getMedicinesForUser = async () => {
-        console.log(yyy?.id, "jjj");
-        const tr=localStorage.getItem("userId")
+        console.log({ yyy }, "jjj");
+       const restaking=TakingMedication()
         const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
         console.log(res);
 

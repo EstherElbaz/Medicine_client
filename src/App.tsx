@@ -9,13 +9,16 @@ import UserDetailsUpdate from './components/UserDetailsUpdate';
 import MyMedicines from './components/MyMedicines';
 import UserProvider from './components/User/UserProvider';
 import { Dialog } from '@mui/material';
+import { UserContext } from "../src/components/User/UserContext";
 
 import FullScreenDialog from './components/dial';
 import { log } from 'console';
+import { User } from './models';
 
 
 function App() {
   const [userId ,setUserId]=useState('');
+  const [user ,setUser]=useState<User>();
   useEffect(()=>{ 
     console.log("leahhh");
     
@@ -30,7 +33,7 @@ function App() {
 
   document.title = "your medicines";
   return (
-    <UserProvider userId={localStorage.getItem("userId")}>
+    <UserContext.Provider value={{ user, setUser }}>
     <BrowserRouter>
       <Routes>
         {userId?<>
@@ -46,7 +49,7 @@ function App() {
       } 
      </ Routes>
     </BrowserRouter>
-    </UserProvider>
+    </UserContext.Provider>
 
   );
 }

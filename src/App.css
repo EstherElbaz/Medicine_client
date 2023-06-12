@@ -1,22 +1,58 @@
 
 body{
-  background: #F2F5FF;
+  background-color: #dee9ff;
+    text-align: center;
 }
 #login{
-direction: rtl;
-margin-right: 25%; 
-margin-top: 20%;
-
+  direction: rtl;
+  background-color: rgb(255, 255, 255);
+  max-width: 400px;
+  margin: auto;
+  padding: 50px 70px;
+    
+}
+#form{
+  padding: 50px 70px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold; 
+  margin-top: 50px;    
+  border-radius: 20px;
+  padding: 10px 20px;
+ 
+}
+#password {
+  padding: 10px 10px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: bold; 
+  margin-top: 10px;    
+  border-radius: 20px;
+ 
+} 
+#userName {
+  padding: 10px 10px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: bold; 
+  margin-top: 0px;    
+  border-radius: 20px;
+ 
+  
 }
 #btn{
-  background-color:rgb(0, 123, 255);
-  color:white ;
-  margin-right:30%;
-  border-radius: 12%;
-  border-color: rgb(0, 123, 255) ;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #5791ff;
+  border: none;
+  color: white;
+  margin-top: 0px;
 }
 .App {
   text-align: center;
+  direction: rtl;
 }
 
 .App-logo {
