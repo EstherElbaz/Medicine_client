@@ -41,7 +41,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path='/update' element={<UserDetailsUpdate />} />
         <Route path='/medicines' element={<MyMedicines />} />
-        <Route path ='/Dialog' element={<FullScreenDialog/>}/>
         <Route path="/login" element={<Login />} />
         </>: 
         <Route path="/" element={<Login />} />
