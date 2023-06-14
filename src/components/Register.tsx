@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import "bootstrap/dist/css/bootstrap.css";
 import { SelectChangeEvent } from "@mui/material";
+<<<<<<< HEAD
 //import BasicDatePicker from "./DatePicker";
+=======
+>>>>>>> 83053276cb36aeba4d0dc35ffa03a7b50e6c8420
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -66,7 +69,7 @@ export default function Register() {
             <div className="mt-5 m-auto w-50">
                 <div id="register" >
 
-                    <input id="userName" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
+                    <input id="userName" type="email" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
                     <br></br>
                     <input id="password" type={"password"} placeholder="סיסמה" onChange={(e) => { { setConfPassword(e.target.value) } }}></input>
                     <br></br>
