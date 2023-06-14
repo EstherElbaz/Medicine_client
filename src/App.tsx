@@ -11,7 +11,7 @@ import UserProvider from './components/User/UserProvider';
 import { Dialog } from '@mui/material';
 import { UserContext } from "../src/components/User/UserContext";
 
-import FullScreenDialog from './components/dial';
+
 import { log } from 'console';
 import { User } from './models';
 
