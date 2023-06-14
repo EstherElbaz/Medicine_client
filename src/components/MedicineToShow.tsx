@@ -40,11 +40,11 @@ export default function MedicineToShow(props: any) {
 
     return (
         <div className={"medicine"}>
-            <h1>in medicine to sh</h1>
-            <h1 className={"medicineName"}>name:{props.name}</h1>
-            <h3>{props.hour}</h3>
-            <h3>{props.note}</h3>
-            <Checkbox onClick={ITtokmymedicine}></Checkbox>
+            <div className="medicineName">{props.name}</div>
+            <div className="medicineNote">{props.note}</div>
+            <div className="medicineHour">{props.hour}</div>
+            <div className="checkbox"><Checkbox onClick={ITtokmymedicine}></Checkbox></div>
+              
         </div>
     )
 }

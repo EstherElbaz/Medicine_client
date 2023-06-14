@@ -2,6 +2,7 @@
 body{
   background-color: #dee9ff;
     text-align: center;
+    direction: rtl;
 }
 #login{
   direction: rtl;
@@ -20,6 +21,43 @@ body{
   border-radius: 20px;
   padding: 10px 20px;
  
+}
+.medicine{
+  border-radius:15px;
+  background-color: #EFEEFF;
+  width: 370px;
+  height: 92px;
+  
+}
+.medicineHour{
+  position: relative;
+  font-size: 20px;
+  font-weight: 700;
+  height:16px ;
+  margin-top:5px ;
+  margin-right: 80px;
+}
+.medicineNote{
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  height:16px ;
+  margin-top:20px ;
+  margin-right: 70px;
+}
+.medicineName{
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+  height:16px ;
+  margin-top:5px ;
+  margin-right: 70px;
+}
+.checkbox{
+  position: relative;
+  height:16px ;
+  margin-right: 250px;
+  align-self: center;
 }
 #password {
   padding: 10px 10px;

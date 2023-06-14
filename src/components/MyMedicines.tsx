@@ -10,12 +10,12 @@ import { log } from "console";
 export default function MyMedicines() {
 
     const [medicines, setMedicines] = useState<any>([]);
+    const [takingMedicines, setTakingMedicines] = useState<any>([]);
     const [addMed, setAddMed] = useState(false);
     const { user:yyy } = useUserContext()
     
     
     const TakingMedication = async ()=>{
-        debugger
         const res = await fetch(`https://localhost:7247/api/TakingMedication`);
         if (!res.ok) {
             throw console.error(`error: stautus code is ${res.status}`);
@@ -26,32 +26,23 @@ export default function MyMedicines() {
         else {
           
           const medlist=await res.json()
-          console.log(medlist,"after get data of taking medication ")
-            const filterArray: string[] = [];
-        debugger
+          setTakingMedicines(medlist)
+          const filterArray: string[] = [];
             for (const medication of  filteredAndOrderedArray) {
-                if (!medlist.includes(medication)) {
-                    filterArray.push(medication);
+                const medicationId=medication.id
+                for(const med of medlist )
+                if (med.id==medicationId) {
+                    filterArray.push(medication);   
                 }
             }
            setMedicines(filterArray)
-           
-        
 
     }
- 
-
         }
-    let filteredAndOrderedArray:any[]=[]
-    const func = async () =>{
-        await getMedicinesForUser() ;
-        await  TakingMedication();
-    }
+    let filteredAndOrderedArray:any[]=[] 
     const getMedicinesForUser = async () => {
         const tr=localStorage.getItem("userId")
-        console.log({ yyy }, "jjj");
         const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
-        console.log(res);
         if (!res.ok) {
             throw console.error(`error: stautus code is ${res.status}`);
         }
@@ -59,23 +50,27 @@ export default function MyMedicines() {
             alert("לא קיימות תרופות");
         }
         else {
-            console.log(res.status);
             const medicinesList = await res.json();
             filteredAndOrderedArray = medicinesList
                 .filter((item: { status: Boolean; }) => item.status == true)
                  .sort((a: { hour: number; }, b: { hour: number; }) => a.hour - b.hour);
-            console.log(filteredAndOrderedArray,"filteredAndOrderedArray");
             setMedicines(filteredAndOrderedArray)
-            console.log(medicines,"medicine....................");
+            
             
         }
     }
-    
+    const func = async () =>{
+        await getMedicinesForUser() ;
+        await  TakingMedication();
+    }
 
 
     useEffect(() => { 
        func();   
     }, []);
+
+
+    
 
     return (
         <div>
@@ -83,9 +78,9 @@ export default function MyMedicines() {
             <div>
                 {medicines.map((med: any) => {
                     return (
-                        <div>
+                        <><div>
                             <MedicineToShow name={med.name} note={med.note} hour={med.hour} id={med.id}></MedicineToShow>
-                        </div>
+                        </div><br /></>
                     );
                 })}
             </div>

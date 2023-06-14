@@ -10,7 +10,7 @@ export default function Login() {
     const navigate = useNavigate();
   
     const login = async () => {
-        debugger
+        
         const res = await fetch(`https://localhost:7247/api/User?userName=${userName}&password=${password}`)
         if (!(res).ok) {
             throw Error(`status: ${res.status} is making troubles again😱`);
@@ -29,7 +29,7 @@ export default function Login() {
                 const user = await res.json();
                 localStorage.setItem("userId", user.id);
                 sessionStorage.setItem("user", JSON.stringify(user));
-                debugger
+                
                 console.log(user,"useer");
                 
                 await (setUser && setUser(user));
