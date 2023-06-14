@@ -5,15 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import "bootstrap/dist/css/bootstrap.css";
 import { SelectChangeEvent } from "@mui/material";
-<<<<<<< HEAD
-//import BasicDatePicker from "./DatePicker";
-=======
->>>>>>> 83053276cb36aeba4d0dc35ffa03a7b50e6c8420
+
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-
-
 export default function Register() {
 
     const [userName, setuserName] = useState<string>("");

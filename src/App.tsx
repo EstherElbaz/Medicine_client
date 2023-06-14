@@ -10,12 +10,6 @@ import MyMedicines from './components/MyMedicines';
 import UserProvider from './components/User/UserProvider';
 import { Dialog } from '@mui/material';
 import { UserContext } from "../src/components/User/UserContext";
-
-<<<<<<< HEAD
-//import FullScreenDialog from './components/dial';
-=======
-
->>>>>>> 83053276cb36aeba4d0dc35ffa03a7b50e6c8420
 import { log } from 'console';
 import { User } from './models';
 
