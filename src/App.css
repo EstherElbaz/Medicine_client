@@ -1,46 +1,50 @@
-
-body{
+body {
   background-color: #dee9ff;
-    text-align: center;
+  text-align: center;
 }
-#login{
+
+#login {
   direction: rtl;
   background-color: rgb(255, 255, 255);
   max-width: 400px;
   margin: auto;
   padding: 50px 70px;
-    
+
 }
-#form{
+
+#form {
   padding: 50px 70px;
   border-radius: 30px;
   font-size: 18px;
-  font-weight: bold; 
-  margin-top: 50px;    
+  font-weight: bold;
+  margin-top: 50px;
   border-radius: 20px;
   padding: 10px 20px;
- 
+
 }
+
 #password {
   padding: 10px 10px;
   border-radius: 30px;
   font-size: 14px;
-  font-weight: bold; 
-  margin-top: 10px;    
+  font-weight: bold;
+  margin-top: 10px;
   border-radius: 20px;
- 
-} 
+
+}
+
 #userName {
   padding: 10px 10px;
   border-radius: 30px;
   font-size: 14px;
-  font-weight: bold; 
-  margin-top: 0px;    
+  font-weight: bold;
+  margin-top: 0px;
   border-radius: 20px;
- 
-  
+
+
 }
-#btn{
+
+#btn {
   border-radius: 30px;
   padding: 10px 20px;
   font-size: 14px;
@@ -50,6 +54,7 @@ body{
   color: white;
   margin-top: 0px;
 }
+
 .App {
   text-align: center;
   direction: rtl;
@@ -85,7 +90,22 @@ body{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+#flowButton {
+  height: 63.75px;
+  width: 63.75px;
+  border-radius: 20%;
+  position: absolute;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  margin-top: 12.5%;
+  margin-bottom: 12.5%;
+
+  background: #4C76FF;
+
 }

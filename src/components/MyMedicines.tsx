@@ -6,6 +6,8 @@ import AddMedicine from "./AddMedicine";
 import MedicineToShow from "./MedicineToShow";
 import { useUserContext } from "./User/UserContext";
 
+
+
 export default function MyMedicines() {
 
     const [medicines, setMedicines] = useState<any>([]);
@@ -67,7 +69,7 @@ export default function MyMedicines() {
                     );
                 })}
             </div>
-            <button onClick={() => setAddMed(true)}>➕</button>
+            <button id="flowButton" onClick={() => setAddMed(true)}>➕</button>
             {addMed && <AddMedicine medList={medicines}></AddMedicine>}
         </div>
     )
