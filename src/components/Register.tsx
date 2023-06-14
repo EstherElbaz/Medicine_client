@@ -65,7 +65,7 @@ export default function Register() {
             <div className="mt-5 m-auto w-50">
                 <div id="register" >
 
-                    <input id="userName" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
+                    <input id="userName" type="email" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
                     <br></br>
                     <input id="password" type={"password"} placeholder="סיסמה" onChange={(e) => { { setConfPassword(e.target.value) } }}></input>
                     <br></br>
