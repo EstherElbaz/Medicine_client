@@ -5,6 +5,7 @@ import { MedicineForUser, User } from "../models";
 import AddMedicine from "./AddMedicine";
 import MedicineToShow from "./MedicineToShow";
 import { useUserContext } from "./User/UserContext";
+import { log } from "console";
 
 
 
@@ -13,19 +14,11 @@ export default function MyMedicines() {
     const [medicines, setMedicines] = useState<any>([]);
     const [addMed, setAddMed] = useState(false);
     const { user:yyy } = useUserContext()
-    const tr=localStorage.getItem("userId")
-    console.log(yyy, "user from context2222222222222222");
+    
+    
     const TakingMedication = async ()=>{
-        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
-        return await res.json
-    }
-    const getMedicines =async ()=>{}
-    const getMedicinesForUser = async () => {
-        console.log({ yyy }, "jjj");
-       const restaking=TakingMedication()
-        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
-        console.log(res);
-
+        debugger
+        const res = await fetch(`https://localhost:7247/api/TakingMedication`);
         if (!res.ok) {
             throw console.error(`error: stautus code is ${res.status}`);
         }
@@ -33,28 +26,57 @@ export default function MyMedicines() {
             alert("לא קיימות תרופות");
         }
         else {
+          
+          const medlist=await res.json()
+          console.log(medlist,"after get data of taking medication ")
+            const filterArray: string[] = [];
+        debugger
+            for (const medication of  filteredAndOrderedArray) {
+                if (!medlist.includes(medication)) {
+                    filterArray.push(medication);
+                }
+            }
+           setMedicines(filterArray)
+           
+        
 
+    }
+ 
+
+        }
+    let filteredAndOrderedArray:any[]=[]
+    const func = async () =>{
+        await getMedicinesForUser() ;
+        await  TakingMedication();
+    }
+    const getMedicinesForUser = async () => {
+        const tr=localStorage.getItem("userId")
+        console.log({ yyy }, "jjj");
+        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
+        console.log(res);
+        if (!res.ok) {
+            throw console.error(`error: stautus code is ${res.status}`);
+        }
+        else if (res.status == 204) {
+            alert("לא קיימות תרופות");
+        }
+        else {
+            console.log(res.status);
             const medicinesList = await res.json();
-            const filteredAndOrderedArray = medicinesList
+            filteredAndOrderedArray = medicinesList
                 .filter((item: { status: Boolean; }) => item.status == true)
                  .sort((a: { hour: number; }, b: { hour: number; }) => a.hour - b.hour);
+            console.log(filteredAndOrderedArray,"filteredAndOrderedArray");
+            setMedicines(filteredAndOrderedArray)
+            console.log(medicines,"medicine....................");
             
-            await setMedicines(filteredAndOrderedArray);
-            console.log(medicines);
         }
     }
+    
 
 
-    useEffect(() => {
-        // let u = (sessionStorage.getItem("user")); /*user.id to use usercontext*/
-        // let user: User;
-        // if (user?.id != null) {
-        // user = JSON.parse(u);
-        getMedicinesForUser();
-        // }
-        // else {
-        //     alert("משתמש לא מחובר")
-        // }
+    useEffect(() => { 
+       func();   
     }, []);
 
     return (
