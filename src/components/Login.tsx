@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "./User/UserContext";
+import CustomPopup from "./CustomPopup";
 
 export default function Login() {
     const [userName, setuserName] = useState<string>("");
@@ -8,6 +9,14 @@ export default function Login() {
     // const [userId,setUser] = useState<any>({})
     const { user: yyy, setUser } = useUserContext();
     const navigate = useNavigate();
+
+
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+      setVisibility(e);
+    };
+  
   
     const login = async () => {
         
@@ -78,6 +87,17 @@ export default function Login() {
             <input id="password"  placeholder="סיסמה" onChange={(e) => { { setPassword(e.target.value) } }}></input>
             </div><br /><br />
             <button id="btn" onClick={login}>התחבר</button>
+
+
+
+            <CustomPopup
+        onClose={popupCloseHandler}
+        show={visibility}
+        title="Hello Jeetendra"
+      >
+        <h1>Hello This is Popup Content Area</h1>
+        <h2>This is my lorem ipsum text here!</h2>
+      </CustomPopup>
 
         </div>
     )
