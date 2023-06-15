@@ -12,6 +12,7 @@ import { Dialog } from '@mui/material';
 import { UserContext } from "../src/components/User/UserContext";
 import { log } from 'console';
 import { User } from './models';
+import FormDialog from './components/formDlg';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         {userId?<>
         <Route path="/home" element={<Home />} />
+        <Route path="/di" element={<FormDialog />} />
         <Route path="/register" element={<Register />} />
         <Route path='/update' element={<UserDetailsUpdate />} />
         <Route path='/medicines' element={<MyMedicines />} />

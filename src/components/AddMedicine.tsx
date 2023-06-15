@@ -92,7 +92,7 @@ export default function AddMedicine(props: any) {
   return (
     <div id="addMedicine">
       <Autocomplete disablePortal id="combo-box-demo" options={medList} sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="תרופה" />}></Autocomplete>
+        renderInput={(params) => <TextField {...params} label="בחר תרופה" />}></Autocomplete>
         <br></br>
       <input
         id="note" placeholder="הערה " onChange={(e) => {
