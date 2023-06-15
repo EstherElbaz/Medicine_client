@@ -23,12 +23,11 @@ export default function AddMedicine(props: any) {
   const setMedArr = (medRes: any) => {
     let medObgs: any = [];
     medRes.forEach((element: any) => {
-      console.log(element.name, "name");
-      console.log(element.id, "id");
       const medObj = {
         value: element.id,
         label: element.name
       }
+      console.log(medObj);
       medObgs.push(medObj);
     });
 
@@ -49,22 +48,22 @@ export default function AddMedicine(props: any) {
         setMedList(medicines);
         console.log(medicines, "med state")
         setMedArr(medicines);
-
       }
   };
 
   const addMedForUser = async () => {
 
-    let medicineForUser = new MedicineForUser(
-      /* us?.id,*/userId, medId, sumOfPills, name, hour, note, status, MedicineName);
+    let mmmmm = new MedicineForUser(2043,4,1,"",1,"אחרי הרבה זמן",true)
 
-    await addData(medicineForUser);
+    let medicineForUser = new MedicineForUser(
+      /* us?.id,*/userId, medId, sumOfPills, name, hour, note, status);
+
+    await addData(mmmmm);
   };
 
 
   const addData = async (medToAdd: MedicineForUser) => {
     let medJson = JSON.stringify(medToAdd);
-
     const requestOptions = {
       method: "POST",
       body: medJson,
@@ -91,9 +90,10 @@ export default function AddMedicine(props: any) {
   }, []);
 
   return (
-    <div>
+    <div id="addMedicine">
       <Autocomplete disablePortal id="combo-box-demo" options={medList} sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="תרופה" />}></Autocomplete>
+        <br></br>
       <input
         id="note" placeholder="הערה " onChange={(e) => {
           {
@@ -102,12 +102,14 @@ export default function AddMedicine(props: any) {
         }}>
 
       </input>
+      <br></br>
       <input id="sumofpill" type="Number" placeholder="כמות " onChange={(e) => {
         {
           setSumOfPills(Number(e.target.value));
         }
       }}>
       </input>
+      <br></br>
       <input id="hour" type="Number" placeholder="שעה" onChange={(e) => {
         {
           setHour(Number(e.target.value));
@@ -115,6 +117,7 @@ export default function AddMedicine(props: any) {
       }}>
 
       </input>
+      <br></br>
       <button onClick={() => addMedForUser()}>הוסף תרופה</button>
     </div>
   );

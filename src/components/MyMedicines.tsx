@@ -71,8 +71,7 @@ export default function MyMedicines() {
                  console.log(filteredAndOrderedArray);
                  
             setMedicines(filteredAndOrderedArray)
-            
-            
+              
         }
     }
     const func = async () =>{
@@ -86,13 +85,11 @@ export default function MyMedicines() {
     }, []);
 
 
-    
-
     return (
         <div>
            
-            <h1>רשימת התרופות ל</h1>
-            {yyy?.firstName}
+            <h1>רשימת התרופות ל{yyy?.firstName}  </h1>
+            
             <div>
                 {medicines.map((med: any) => {
                     return (

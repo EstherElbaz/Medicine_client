@@ -1,7 +1,12 @@
+.addMedicine {
+  color: #374386;
+}
+
+
 body {
   background-color: #dee9ff;
-    text-align: center;
-    direction: rtl;
+  text-align: center;
+  direction: rtl;
   text-align: center;
 }
 
@@ -11,7 +16,6 @@ body {
   max-width: 400px;
   margin: auto;
   padding: 50px 70px;
-
 }
 
 #form {
@@ -25,40 +29,44 @@ body {
 
 }
 
-.medicine{
-  border-radius:15px;
+.medicine {
+  border-radius: 15px;
   background-color: #EFEEFF;
   width: 370px;
   height: 92px;
-  
+
 }
-.medicineHour{
+
+.medicineHour {
   position: relative;
   font-size: 20px;
   font-weight: 700;
-  height:16px ;
-  margin-top:5px ;
+  height: 16px;
+  margin-top: 5px;
   margin-right: 120px;
 }
-.medicineNote{
+
+.medicineNote {
   position: relative;
   font-size: 14px;
   font-weight: 700;
-  height:16px ;
-  margin-top:20px ;
+  height: 16px;
+  margin-top: 20px;
   margin-right: 100px;
 }
-.medicineName{
+
+.medicineName {
   position: relative;
   font-size: 25px;
   font-weight: 700;
-  height:16px ;
-  margin-top:5px ;
-  margin-right:100px;
+  height: 16px;
+  margin-top: 5px;
+  margin-right: 100px;
 }
-.checkbox{
+
+.checkbox {
   position: relative;
-  height:16px ;
+  height: 16px;
   margin-right: 300px;
   margin-top: -50px;
   align-self: center;

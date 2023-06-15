@@ -24,14 +24,13 @@ export class MedicineForUser {
     Id: Number = 0;
     UserId: Number = 0;
     MedicineId: Number = 0;
-    name:String = "";
+    name: String = "";
     SumOfPills: Number = 0;
     Hour: Number = 0;
     Note: String = "";
     Status: Boolean = true;
-    MedicineName: String = ""
 
-    constructor(userId: any, medicineId: Number, sumOfPills: Number, name:String, hour: Number, note: String, status: Boolean, MedicineName: String) {
+    constructor(userId: any, medicineId: Number, sumOfPills: Number, name: String, hour: Number, note: String, status: Boolean) {
         this.UserId = userId;
         this.MedicineId = medicineId;
         this.SumOfPills = sumOfPills;
@@ -39,7 +38,7 @@ export class MedicineForUser {
         this.Hour = hour;
         this.Note = note;
         this.Status = status;
-        this.MedicineName = MedicineName;
+
     }
 }
 
