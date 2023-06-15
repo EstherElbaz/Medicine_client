@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "./User/UserContext";
-import CustomPopup from "./CustomPopup";
+
 
 export default function Login() {
     const [userName, setuserName] = useState<string>("");
@@ -11,15 +11,8 @@ export default function Login() {
     const navigate = useNavigate();
 
 
-    const [visibility, setVisibility] = useState(false);
-
-    const popupCloseHandler = (e) => {
-      setVisibility(e);
-    };
-  
-  
     const login = async () => {
-        
+
         const res = await fetch(`https://localhost:7247/api/User?userName=${userName}&password=${password}`)
         if (!(res).ok) {
             throw Error(`status: ${res.status} is making troubles again😱`);
@@ -38,24 +31,24 @@ export default function Login() {
                 const user = await res.json();
                 localStorage.setItem("userId", user.id);
                 sessionStorage.setItem("user", JSON.stringify(user));
-                
-                console.log(user,"useer");
-                
+
+                console.log(user, "useer");
+
                 await (setUser && setUser(user));
-                console.log(yyy,"uuuu");
-                
+                console.log(yyy, "uuuu");
+
 
                 navigate("../medicines", { replace: true });
             }
     }
 
-    
+
     const getUserById = async () => {
-       if(!yyy) {
-        return
-    }
+        if (!yyy) {
+            return
+        }
         const res = await fetch(`https://localhost:7247/api/User/getById?userId=${yyy?.id}`)
-       console.log("leah111111111111111111111 cj",yyy);
+        console.log("leah111111111111111111111 cj", yyy);
         if (!(res).ok) {
             throw Error(`status: ${res.status} is making troubles again😱`);
         }
@@ -72,36 +65,22 @@ export default function Login() {
             }
     }
     useEffect(() => {
-         getUserById()
-        console.log({ yyy },"6yttxgfsdchhyjulpo");
+        getUserById()
+        console.log({ yyy }, "6yttxgfsdchhyjulpo");
     }, [yyy])
 
 
     return (
         <div id="login" >
             <div id="form">
-            <h1>שלום 😊</h1>
-            <br />
-            <input id="userName" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
-            <br /><br />
-            <input id="password"  placeholder="סיסמה" onChange={(e) => { { setPassword(e.target.value) } }}></input>
+                <h1>שלום 😊</h1>
+                <br />
+                <input id="userName" placeholder="כתובת מייל" onChange={(e) => { { setuserName(e.target.value) } }}></input>
+                <br /><br />
+                <input id="password" placeholder="סיסמה" onChange={(e) => { { setPassword(e.target.value) } }}></input>
             </div><br /><br />
             <button id="btn" onClick={login}>התחבר</button>
-
-
-
-            <CustomPopup
-        onClose={popupCloseHandler}
-        show={visibility}
-        title="Hello Jeetendra"
-      >
-        <h1>Hello This is Popup Content Area</h1>
-        <h2>This is my lorem ipsum text here!</h2>
-      </CustomPopup>
-
+         
         </div>
     )
 }
-
-
-
