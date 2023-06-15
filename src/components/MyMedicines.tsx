@@ -24,7 +24,7 @@ export default function MyMedicines() {
         }
         
         else {
-          debugger
+          
           medlist=await res.json()
           console.log(medlist);
     }
