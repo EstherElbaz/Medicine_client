@@ -26,37 +26,62 @@ export default function MyMedicines() {
         else {
           
           medlist=await res.json()
-          console.log(medlist);
+          console.log(medlist,"medlist");
     }
-}
+} 
+    const filterArray: any[] = [];
     const findExsit = async () =>{
-        const filterArray: string[] = [];
+        debugger;
+        console.log(filterArray,"filterArray before");
             for (const medication of  filteredAndOrderedArray) {
                 const medicationId=medication.id;
+                console.log(medicationId,"medicationId");
+                
                 for (const med of medlist) {
-                    const medicationfor=med.medicineForUserId;
-                    console.log(medicationfor,"1111111111111");
-                    console.log(medlist)
+                    const medicationfor=med.medicineForUser;
+                    console.log(medicationfor,"medicationfor");
+                    console.log(medlist,"medlist in side for ")
                     if (medicationfor==medicationId) {
-                        console.log(medication);
-                        setFlag(true)
+                        console.log(medication,"medic to take");
+                        // setFlag(true)
+                        Promise.resolve()
+                        .then(() => { setFlag(true)})
+                        .then(() => {
+                            console.log(flag, "flag after set")
+                            chckFlag(medication)
+                        })
+                        // console.log(flag,medication);
+                        break 
                     }
                 }
-                if(flag==false){
-                    filterArray.push(medication); }
-                else{
-                    setFlag(false)}
             }
+            
             console.log(filterArray);
             
            setMedicines(filterArray)
+    }
+    const chckFlag=async(medication:MedicineForUser)=>{
+        console.log(flag,"flag in chckFlag");
+        
+        if(flag===false){
+            filterArray.push(medication); 
+            console.log(filterArray,"filterArray111111111111111111111111  in chckFlag");
+        }
+        else{
+            setFlag(false)}
     }
         
     let filteredAndOrderedArray:any[]=[] 
     
     const getMedicinesForUser = async () => {
+        debugger
         const tr=localStorage.getItem("userId")
-        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${tr}`);
+        console.log(yyy,"yyy");
+        
+        const userIdfor=yyy?.id;
+        console.log(userIdfor,"userIdfor");
+        
+        const res = await fetch(`https://localhost:7247/api/MedicineForUser?userId=${userIdfor}`);
         if (!res.ok) {
             throw console.error(`error: stautus code is ${res.status}`);
         }
@@ -68,7 +93,7 @@ export default function MyMedicines() {
             filteredAndOrderedArray = medicinesList
                 .filter((item: { status: Boolean; }) => item.status == true)
                  .sort((a: { hour: number; }, b: { hour: number; }) => a.hour - b.hour);
-                 console.log(filteredAndOrderedArray);
+                 console.log(filteredAndOrderedArray,"filteredAndOrderedArray");
                  
             setMedicines(filteredAndOrderedArray)
               
