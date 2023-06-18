@@ -43,22 +43,18 @@ export default function MyMedicines() {
                     console.log(medlist,"medlist in side for ")
                     if (medicationfor==medicationId) {
                         console.log(medication,"medic to take");
-                        // setFlag(true)
                         Promise.resolve()
                         .then(() => { setFlag(true)})
                         .then(() => {
                             console.log(flag, "flag after set")
                             chckFlag(medication)
                         })
-                        // console.log(flag,medication);
                         break 
                     }
                 }
             }
-            
             console.log(filterArray);
-            
-           setMedicines(filterArray)
+            setMedicines(filterArray)
     }
     const chckFlag=async(medication:MedicineForUser)=>{
         console.log(flag,"flag in chckFlag");
@@ -90,6 +86,8 @@ export default function MyMedicines() {
         }
         else {
             const medicinesList = await res.json();
+            console.log(medicinesList,"before filter");
+            
             filteredAndOrderedArray = medicinesList
                 .filter((item: { status: Boolean; }) => item.status == true)
                  .sort((a: { hour: number; }, b: { hour: number; }) => a.hour - b.hour);
