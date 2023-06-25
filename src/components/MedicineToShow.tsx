@@ -1,20 +1,24 @@
 import { Checkbox } from "@mui/material"
 import React, { useState } from "react"
 import { TakingMedication } from "../models";
+import { useUserContext } from "./User/UserContext";
 
 export default function MedicineToShow(props: any) {
 
 
     //const [status,setStutus] = useState();
     const [isToken, setIsToken] = useState(false);
-
+    const [disabled,setDisabled]=useState(true)
+    const [backgroundColor,setBackgroundColor]=useState<string>('#EFEEFF');
+    const { user:yyy } = useUserContext()
     console.log(isToken);
 
-    const addTakingMedication = async (tmObj: TakingMedication) => {
-
+    const addTakingMedication = async (medobj: TakingMedication) => {
+        debugger
+        let medJson = JSON.stringify(medobj);
         const requestOptions = {
             method: 'POST',
-            body: JSON.stringify(tmObj),
+            body: JSON.stringify(medJson),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
@@ -26,25 +30,33 @@ export default function MedicineToShow(props: any) {
         }
         else{
             console.log(res.json)
-            //לעשות את הצק בוקס דיסאבל
             alert(`לקחת את התרופה ${props.name}`)
         }
     }
 
     const ITtokmymedicine = async () => {
         setIsToken(!isToken)
+        setDisabled(false);
+        
+        setBackgroundColor("#A78BFA")
+       
         const tmObj: TakingMedication = new TakingMedication(props.id, new Date());
         addTakingMedication(tmObj);
+    
     }
 
 
-    return (
-        <div className={"medicine"}>
+    return ( 
+        <div className={"medicine"}style={{backgroundColor}}>
+           
             <div className="medicineName">{props.name}</div>
             <div className="medicineNote">{props.note}</div>
             <div className="medicineHour">{props.hour}</div>
-            <div className="checkbox"><Checkbox onClick={ITtokmymedicine}></Checkbox></div>
-              
+            {disabled && (
+            <div className="checkbox"><Checkbox onClick={ITtokmymedicine} ></Checkbox></div>
+            )
+            }      
         </div>
+        
     )
 }
