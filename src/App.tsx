@@ -1,54 +1,17 @@
-import React, { useEffect, useState } from 'react';
-//import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-import Login from './components/Login';
-import Register from './components/Register';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import UserDetailsUpdate from './components/UserDetailsUpdate';
-import MyMedicines from './components/MyMedicines';
-import UserProvider from './components/User/UserProvider';
-import { Dialog } from '@mui/material';
 import { UserContext } from "../src/components/User/UserContext";
-import { log } from 'console';
 import { User } from './models';
-import FormDialog from './components/formDlg';
-
+import RoutesMap from './RoutesMap';
 
 function App() {
-  const [userId ,setUserId]=useState('');
-  const [user ,setUser]=useState<User>();
-  useEffect(()=>{ 
-    console.log("leahhh");
-    
-  const id =localStorage.getItem("userId")
-  console.log(id,"id");
-  
-  if(typeof id  ==='string'){
-    console.log(id,"id")
-      setUserId(id)
-  }
-  },[])
+  const [user, setUser] = useState<User>();
 
   document.title = "your medicines";
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
-    <BrowserRouter>
-      <Routes>
-        {userId?<>
-        <Route path="/home" element={<Home />} />
-        <Route path="/di" element={<FormDialog />} />
-        <Route path="/register" element={<Register />} />
-        <Route path='/update' element={<UserDetailsUpdate />} />
-        <Route path='/medicines' element={<MyMedicines />} />
-        <Route path="/login" element={<Login />} />
-   
-        </>: 
-        <Route path="/" element={<Login />} />
-     
-      } 
-     </ Routes>
-    </BrowserRouter>
+      <RoutesMap/>
     </UserContext.Provider>
 
   );

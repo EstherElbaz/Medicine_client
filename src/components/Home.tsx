@@ -23,8 +23,8 @@ export default function Home() {
 
     return (
         <div>
-            <h1>hello {us?.firstName}</h1>
-            <button onClick={() => setCount(count + 1)}>set number title</button>
+            <h1>medication manager</h1>
+            {/* <button onClick={() => setCount(count + 1)}>set number title</button> */}
         </div>
     )
 
