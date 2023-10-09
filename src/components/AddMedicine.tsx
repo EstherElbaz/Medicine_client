@@ -7,6 +7,8 @@ import { ifError } from "assert";
 export default function AddMedicine(props: any) {
 
   const { user: us } = useUserContext();
+
+  // add medicine
   const [medId, setMedId] = useState(1);
   const [hour, setHour] = useState<Number>(12);
   const [sumOfPills, setSumOfPills] = useState<Number>(1);
