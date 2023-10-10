@@ -30,7 +30,7 @@ export default function RoutesMap() {
             <Routes>
                 {userId ? <>
                     <Route path="/" element={<Home />} />
-                    {/* <Route path="/di" element={<FormDialog />} /> */}
+                    <Route path="/di" element={<FormDialog />} />
                     <Route path="/register" element={<Register />} />
                     <Route path='/update' element={<UserDetailsUpdate />} />
                     <Route path='/medicines' element={<MyMedicines />} />
