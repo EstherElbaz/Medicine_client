@@ -8,7 +8,6 @@ export default function AddMedicine(props: any) {
 
   const { user: us } = useUserContext();
 
-  // add medicine
   const [medId, setMedId] = useState(1);
   const [hour, setHour] = useState<Number>(12);
   const [sumOfPills, setSumOfPills] = useState<Number>(1);
@@ -55,7 +54,7 @@ export default function AddMedicine(props: any) {
 
   const addMedForUser = async () => {
 
-    let mmmmm = new MedicineForUser(2043,4,1,"",1,"אחרי הרבה זמן",true)
+    let mmmmm = new MedicineForUser(2043, 4, 1, "", 1, "אחרי הרבה זמן", true)
 
     let medicineForUser = new MedicineForUser(
       /* us?.id,*/userId, medId, sumOfPills, name, hour, note, status);
@@ -93,9 +92,10 @@ export default function AddMedicine(props: any) {
 
   return (
     <div id="addMedicine">
+      <h1>הוספת תרופה</h1>
       <Autocomplete disablePortal id="combo-box-demo" options={medList} sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="בחר תרופה" />}></Autocomplete>
-        <br></br>
+      <br></br>
       <input
         id="note" placeholder="הערה " onChange={(e) => {
           {

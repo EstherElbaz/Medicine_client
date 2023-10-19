@@ -45,7 +45,7 @@ export default function MyMedicines() {
     } 
     
     function checkexsit(id: number): boolean {
-        debugger
+        // debugger
          for (const med of medlist) {
             const medicationfor=med.medicineForUser;
             if (id===medicationfor){
