@@ -14,7 +14,6 @@ export default function MedicineToShow(props: any) {
     console.log(isToken);
 
     const addTakingMedication = async (medobj: TakingMedication) => {
-        debugger
         let medJson = JSON.stringify(medobj);
         const requestOptions = {
             method: 'POST',

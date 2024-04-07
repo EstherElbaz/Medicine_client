@@ -9,6 +9,9 @@ import { log } from "util";
 
 
 export default function MyMedicines() {
+
+    const base_url = 'https://localhost:7247/api/'
+
     const [medicines, setMedicines] = useState<any>([]);
     const [takingMedicines, setTakingMedicines] = useState<any>([]);
     const [addMed, setAddMed] = useState(false);
@@ -18,7 +21,7 @@ export default function MyMedicines() {
     let filteredAndOrderedArray:any[]=[]
     const TakingMedication = async ()=>{
         const res = 
-        await fetch(`https://localhost:7247/api/TakingMedication`);
+        await fetch(`${base_url}TakingMedication`);
         if (!res.ok) {
             throw console.
             error(`error: stautus code is ${res.status}`);
@@ -45,7 +48,6 @@ export default function MyMedicines() {
     } 
     
     function checkexsit(id: number): boolean {
-        // debugger
          for (const med of medlist) {
             const medicationfor=med.medicineForUser;
             if (id===medicationfor){
@@ -60,7 +62,7 @@ export default function MyMedicines() {
     const getMedicinesForUser = async () => {
         const id=yyy?.id;
         const res = await 
-        fetch(`https://localhost:7247/api/MedicineForUser?userId=${id}`);
+        fetch(`${base_url}MedicineForUser?userId=${id}`);
         if (!res.ok) {
             throw console.error(`error: stautus code is${res.status}`);
         }
